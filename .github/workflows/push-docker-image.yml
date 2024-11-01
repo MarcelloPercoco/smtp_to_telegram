@@ -1,4 +1,4 @@
-name: Manual-build  # When pushing to any branch then run this action
+name: Push-to--build  # When pushing to any branch then run this action
 # Env variable
 env:
   DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
