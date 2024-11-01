@@ -1,4 +1,7 @@
-FROM golang:alpinei3.20 AS builder
+FROM golang:alpine3.20 AS builder
+
+RUN apk update \
+	&& apk upgrade --no-cache
 
 RUN apk add --no-cache git ca-certificates mailcap
 
@@ -20,6 +23,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build \
 
 
 FROM alpine:3.20
+
+RUN apk update \
+	&& apk upgrade --no-cache
 
 RUN apk add --no-cache ca-certificates mailcap
 
