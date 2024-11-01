@@ -29,6 +29,7 @@ jobs: # job name
       - name: Build the Docker image # push The image to the docker hub
         uses: docker/build-push-action@v6
         with:
+          context: .
           tags: ${{ env.REPO_NAME }}:latest
           platforms: linux/arm/v7,linux/arm64,linux/amd64
           push: true
