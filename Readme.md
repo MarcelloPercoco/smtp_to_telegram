@@ -1,5 +1,8 @@
 # SMTP to Telegram
 
+##Forked from https://hub.docker.com/r/kostyaesmukov/smtp_to_telegram
+##Note that i'm not a developer, i've only forked the original project and updated alpine and golang version, hopefully everything works!
+
 [![Docker Hub](https://img.shields.io/docker/pulls/kostyaesmukov/smtp_to_telegram.svg?style=flat-square)][Docker Hub]
 [![Go Report Card](https://goreportcard.com/badge/github.com/KostyaEsmukov/smtp_to_telegram?style=flat-square)][Go Report Card]
 [![License](https://img.shields.io/github/license/KostyaEsmukov/smtp_to_telegram.svg?style=flat-square)][License]
