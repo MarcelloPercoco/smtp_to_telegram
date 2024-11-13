@@ -1,9 +1,10 @@
-FROM golang:alpine3.20 AS builder
+ARG ALPINE_VERSION=3.20
+
+FROM golang:alpine${ALPINE_VERSION} AS builder
 
 RUN apk update \
-	&& apk upgrade --no-cache
-
-RUN apk add --no-cache git ca-certificates mailcap
+	&& apk upgrade --no-cache \
+    && apk add --no-cache git ca-certificates mailcap
 
 WORKDIR /app
 
@@ -18,16 +19,11 @@ RUN CGO_ENABLED=0 GOOS=linux go build \
             -X main.Version=${ST_VERSION:-UNKNOWN_RELEASE}" \
         -a -o smtp_to_telegram
 
-
-
-
-
-FROM alpine:3.20
+FROM alpine:${ALPINE_VERSION}
 
 RUN apk update \
-	&& apk upgrade --no-cache
-
-RUN apk add --no-cache ca-certificates mailcap
+	&& apk upgrade --no-cache \
+    && apk add --no-cache ca-certificates mailcap
 
 COPY --from=builder /app/smtp_to_telegram /smtp_to_telegram
 
