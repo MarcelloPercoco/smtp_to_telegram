@@ -1,7 +1,5 @@
 ARG ALPINE_VERSION=3.20
 
-ENV ST_SMTP_LISTEN=0.0.0.0:2525
-
 FROM golang:alpine${ALPINE_VERSION} AS builder
 
 RUN apk update \
@@ -22,6 +20,8 @@ RUN CGO_ENABLED=0 GOOS=linux go build \
         -a -o smtp_to_telegram
 
 FROM alpine:${ALPINE_VERSION}
+
+ENV ST_SMTP_LISTEN=0.0.0.0:2525
 
 RUN apk update \
 	&& apk upgrade --no-cache \
